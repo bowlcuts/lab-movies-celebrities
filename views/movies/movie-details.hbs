@@ -12,9 +12,9 @@
 <h6>{{catchPhrase}}</h6>
 {{/each}}
 
-<a href="/movies/{{_id}}/edit">Edit</a>
+<a href="/movies/{{movieDetails._id}}/edit">Edit</a>
 
-<form action="/movies/{{_id}}/delete" method="post">
+<form action="/movies/{{movieDetails._id}}/delete" method="post">
     <button value="delete">DELETE!</button>
 </form>
 

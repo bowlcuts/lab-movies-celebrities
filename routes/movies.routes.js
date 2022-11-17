@@ -49,18 +49,20 @@ router.get('/movies/:id', (req, res, next) => {
     .catch(err => console.log(err))
 });
 
+
 router.post('/movies/:id/delete', (req, res, next) => {
     Movie.findByIdAndRemove(req.params.id)
     .then((movieDelete) => {
         console.log('movie was removed', movieDelete);
-        res.redirect('/movies/movies.hbs', { movieDelete });
+        res.redirect('/movies');
     })
     .catch(err => console.log('error while deleting movie: ', err));
 });
 
-router.get('movies/:id/edit', (req, res, next) => {
+router.get('/movies/:id/edit', (req, res, next) => {
     Movie.findById(req.params.id).populate('cast')
     .then((movies) => {
+        console.log(movies)
         res.render('movies/edit-movie.hbs', { movies })
     })
     .catch(err => console.log('couldnt edit', err));
